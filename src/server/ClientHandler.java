@@ -58,7 +58,7 @@ public class ClientHandler {
                             objectOutputStream.writeObject(medicalServiceDates);
                             break;
                         }
-                        case Actions.ADD_SERVICE: {
+                        case Actions.ADD_USER_SERVICE: {
                             db.addService((MedicalServiceAction) commandObject.getObject());
                             objectOutputStream.writeObject(null);
                             break;
@@ -75,6 +75,11 @@ public class ClientHandler {
                         case Actions.ADD_DIRECTION: {
                             MedicalDirection medicalDirection = db.addDirection((MedicalDirection) commandObject.getObject());
                             objectOutputStream.writeObject(medicalDirection);
+                            break;
+                        }
+                        case Actions.ADD_SERVICE: {
+                            MedicalServiceAction medicalServiceAction = db.addServiceAdmin((MedicalServiceAction) commandObject.getObject());
+                            objectOutputStream.writeObject(medicalServiceAction);
                             break;
                         }
                     }

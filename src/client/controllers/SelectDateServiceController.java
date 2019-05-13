@@ -26,7 +26,7 @@ public class SelectDateServiceController extends Connection {
     private ComboBox<MedicalServiceDate> dateSelectCombo;
 
     void addService() {
-        CommandObject<MedicalServiceAction> commandObject = new CommandObject<>(Actions.ADD_SERVICE);
+        CommandObject<MedicalServiceAction> commandObject = new CommandObject<>(Actions.ADD_USER_SERVICE);
         Store.currentService.setCurrentUser(Store.activeUser);
         commandObject.setObject(Store.currentService);
         try {

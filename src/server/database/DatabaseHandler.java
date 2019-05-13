@@ -212,4 +212,22 @@ public class DatabaseHandler extends Config {
         return medicalDirection;
     }
 
+    public MedicalServiceAction addServiceAdmin(MedicalServiceAction medicalServiceAction) {
+        String insert =  "INSERT INTO " + Constants.MEDICAL_SERVICES_TABLE
+                + "(title, price, directionId)"
+                + "VALUES(?, ?, ?)";
+        PreparedStatement prSt;
+        try {
+            prSt = dbConnection.prepareStatement(insert);
+            prSt.setString(1, medicalServiceAction.getMedicalService().getTitle());
+            prSt.setFloat(2, medicalServiceAction.getMedicalService().getPrice());
+            prSt.setInt(3, medicalServiceAction.getMedicalDirection().getId());
+            prSt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return  medicalServiceAction;
+    }
+
 }
